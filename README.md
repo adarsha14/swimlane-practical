@@ -5,13 +5,7 @@ Node.js + MongoDB app running on a self-managed Kubernetes cluster on AWS.
 ## The setup
 
 Everything sits behind a bastion host. The K8s nodes don't have public IPs -- they live in private subnets and talk to the internet through a NAT Gateway. The only way in is through the bastion, which also runs Nginx to serve the app on port 80.
-
-```
-you --> bastion (nginx, port 80) --> master (nodeport 30000) --> app pod
-                                 --> worker
-                                 
-        private nodes --> NAT Gateway --> internet (docker pull, apt, etc.)
-```
+<img width="801" height="534" alt="Screenshot 2026-02-20 at 8 13 46 PM" src="https://github.com/user-attachments/assets/c3ba6899-fbc0-42c6-8151-417cb782bc5c" />
 
 ## Tools used
 
