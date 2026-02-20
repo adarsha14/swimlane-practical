@@ -90,34 +90,3 @@ sudo nginx -t && sudo systemctl reload nginx
 ```
 
 Hit `http://BASTION_IP` in your browser.
-
-## Running locally
-
-```bash
-npm install
-cp .env.example .env
-docker-compose up
-```
-
-App runs at http://localhost:3000.
-
-## Tearing it down
-
-```bash
-cd terraform/private
-terraform destroy -var key_name=mykey -var ami_id=ami-xxxxx
-```
-
-Delete the Packer AMI and its snapshot from the AWS console if you don't need them.
-
-## Project layout
-
-```
-terraform/private/   -- prod infra (private subnets, bastion, NAT)
-terraform/public/    -- simple infra (public IPs, default VPC)
-ansible/             -- playbooks and roles (bastion, ntp, k8s, master, worker)
-packer/              -- AMI build config
-k8s/                 -- kustomize manifests (base + dev/prod overlays)
-```
-
-See [docs/private-infra-setup.md](docs/private-infra-setup.md) for the full walkthrough with traffic flow diagrams and security group details.
