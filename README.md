@@ -316,4 +316,3 @@ terraform destroy -var key_name=<your-key-name> -var ami_id=<your-ami-id>
 ```
 
 To also deregister the Packer AMI, go to AWS Console > EC2 > AMIs and deregister it manually, then delete the associated snapshot.
-
