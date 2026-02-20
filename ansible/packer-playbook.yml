@@ -1,0 +1,9 @@
+---
+# This playbook is run by Packer to bake NTP and Kubernetes
+# dependencies into the AMI. No cluster-specific config here.
+- name: Bake K8s node image with NTP and Kubernetes dependencies
+  hosts: all
+  become: true
+  roles:
+    - ntp
+    - kubernetes

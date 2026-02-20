@@ -1,0 +1,25 @@
+---
+- name: Configure bastion as NAT instance and reverse proxy
+  hosts: bastion
+  become: true
+  roles:
+    - bastion
+
+- name: Install NTP and Kubernetes dependencies on all nodes
+  hosts: k8s
+  become: true
+  roles:
+    - ntp
+    - kubernetes
+
+- name: Initialize Kubernetes master
+  hosts: master
+  become: true
+  roles:
+    - master
+
+- name: Join workers to the cluster
+  hosts: workers
+  become: true
+  roles:
+    - worker
